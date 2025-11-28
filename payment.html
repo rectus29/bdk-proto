@@ -36,7 +36,6 @@
     <script type="text/javascript" async=""
             src="./resources/bat.js"></script>
 
-
     <style>
         /* Responsive fix pour les "lignes grises" sur mobile */
         @media screen and (max-width: 479px) {
@@ -971,222 +970,6 @@ Removing this could affect how your website behave.
                         }
                     }
 
-                    /* ------------------------------------
-                       SECTION HERO
-                    ------------------------------------ */
-
-                    .offers_hero {
-                        background: #F7F9FC;
-                        padding: 100px 0;
-                        text-align: center;
-                    }
-
-                    .offers_hero h1 {
-                        font-size: 48px;
-                        font-weight: 700;
-                        color: #1D2939;
-                    }
-
-                    .offers_hero p {
-                        font-size: 20px;
-                        color: #475467;
-                        max-width: 680px;
-                        margin: auto;
-                    }
-
-
-                    /* ------------------------------------
-                       CARDS SECTION
-                    ------------------------------------ */
-
-                    .offers_cards_section {
-                        padding: 80px 0;
-                        background: #FFFFFF;
-                    }
-
-                    .offers_cards_wrapper {
-                        display: grid;
-                        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                        gap: 32px;
-                    }
-
-
-                    /* ------------------------------------
-                       OFFRE CARDS
-                    ------------------------------------ */
-
-                    .offer_card {
-                        padding: 32px;
-                        border-radius: 16px;
-                        box-shadow: 0px 4px 16px rgba(0,0,0,0.07);
-                        background: white;
-                        transition: 0.25s ease;
-                        display: flex;
-                        flex-direction: column;
-                    }
-
-                    .offer_card:hover {
-                        transform: translateY(-5px);
-                        box-shadow: 0px 6px 20px rgba(0,0,0,0.12);
-                    }
-
-                    /* Title */
-                    .offer_card h3 {
-                        font-size: 24px;
-                        font-weight: 700;
-                        color: #1D2939;
-                        margin-bottom: 8px;
-                    }
-
-                    /* Description */
-                    .offer_card p {
-                        font-size: 16px;
-                        color: #667085;
-                        margin-bottom: 24px;
-                    }
-
-                    /* List */
-                    .offer_list {
-                        list-style: none;
-                        padding: 0;
-                        margin: 0 0 32px 0;
-                    }
-
-                    .offer_list li {
-                        font-size: 15px;
-                        padding: 8px 0;
-                        display: flex;
-                        align-items: center;
-                        color: #475467;
-                    }
-
-                    .offer_list li::before {
-                        content: "✔";
-                        color: #2E90FA;
-                        margin-right: 8px;
-                        font-size: 14px;
-                    }
-
-                    /* ------------------------------------
-                       COLORS DIFFERENCES PAR OFFRE
-                    ------------------------------------ */
-
-                    .offer_card_yellow {
-                        border-top: 6px solid #FDC700;
-                    }
-
-                    .offer_card_blue {
-                        border-top: 6px solid #2E90FA;
-                    }
-
-                    .offer_card_purple {
-                        border-top: 6px solid #9B4DFF;
-                    }
-
-                    /* ------------------------------------
-                       COMPARATIF TABLE
-                    ------------------------------------ */
-
-                    .offers_comparatif_section {
-                        padding: 90px 0;
-                        background: #F9FAFB;
-                    }
-
-                    .offers_comparatif_section h2 {
-                        text-align: center;
-                        font-size: 36px;
-                        margin-bottom: 40px;
-                    }
-
-                    .offers_table {
-                        width: 100%;
-                        border-collapse: collapse;
-                        background: #FFFFFF;
-                        border-radius: 16px;
-                        overflow: hidden;
-                        box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-                    }
-
-                    .offers_table thead th {
-                        background: #F2F4F7;
-                        padding: 16px;
-                        font-weight: 600;
-                        font-size: 16px;
-                        color: #344054;
-                        text-align: center;
-                    }
-
-                    .offers_table td {
-                        padding: 16px;
-                        text-align: center;
-                        color: #475467;
-                        border-bottom: 1px solid #E4E7EC;
-                    }
-
-                    .offers_table tbody tr:last-child td {
-                        border-bottom: none;
-                    }
-
-
-                    /* ------------------------------------
-                       CTA FINALE
-                    ------------------------------------ */
-
-                    .offers_cta {
-                        padding: 100px 0;
-                        background: #2E90FA;
-                        color: white;
-                        text-align: center;
-                    }
-
-                    .offers_cta h2 {
-                        font-size: 36px;
-                        margin-bottom: 16px;
-                    }
-
-                    .offers_cta p {
-                        font-size: 18px;
-                        opacity: 0.95;
-                        margin-bottom: 32px;
-                    }
-
-                    .offers_cta .new_button.big {
-                        background: #fff;
-                        color: #2E90FA;
-                        font-weight: 700;
-                    }
-
-                    .offers_cta .new_button.big:hover {
-                        background: #F2F4F7;
-                    }
-
-
-                    /* ------------------------------------
-                       RESPONSIVE
-                    ------------------------------------ */
-
-                    @media (max-width: 768px) {
-
-                        .offers_hero h1 {
-                            font-size: 34px;
-                        }
-
-                        .offers_hero p {
-                            font-size: 18px;
-                        }
-
-                        .offers_cards_section {
-                            padding: 60px 0;
-                        }
-
-                        .offers_cta h2 {
-                            font-size: 28px;
-                        }
-
-                        .offers_cta p {
-                            font-size: 16px;
-                        }
-                    }
 
 
                 </style>
@@ -1194,117 +977,257 @@ Removing this could affect how your website behave.
         </div>
         <div class="w-nav-overlay" data-wf-ignore="" id="w-nav-overlay-0"></div>
     </div>
+    <style>
+        /* ---------- HERO ---------- */
+
+        .payment_hero {
+            padding: 80px 0;
+            text-align: center;
+            background: #F7F9FC;
+        }
+
+        .payment_hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #1D2939;
+        }
+
+        .payment_hero p {
+            font-size: 18px;
+            color: #475467;
+            margin-top: 10px;
+        }
+
+        /* ---------- LAYOUT ---------- */
+
+        .payment_section {
+            padding: 80px 0;
+        }
+
+        .payment_grid {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 40px;
+        }
+
+        @media(max-width: 900px) {
+            .payment_grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ---------- FORMULAIRE ---------- */
+
+        .payment_form_card {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+        }
+
+        .payment_form_card h2 {
+            margin-bottom: 20px;
+        }
+
+        .payment_form label {
+            display: block;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #344054;
+        }
+
+        .payment_form input {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 10px;
+            border: 1px solid #D0D5DD;
+            margin-top: 6px;
+            transition: 0.25s;
+        }
+
+        .payment_form input:focus {
+            border-color: #2E90FA;
+            box-shadow: 0 0 0 3px rgba(46,144,250,0.15);
+            outline: none;
+        }
+
+        .payment_card_box {
+            background: #F8FAFC;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #E4E7EC;
+            margin-bottom: 20px;
+        }
+
+        .payment_card_row {
+            display: flex;
+            gap: 16px;
+            margin-top: 12px;
+        }
+
+        /* ---------- BUTTON ---------- */
+
+        .new_button.big {
+            width: 100%;
+            padding: 16px;
+            border-radius: 10px;
+            background: #2E90FA;
+            color: white;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: 0.25s;
+        }
+
+        .new_button.big:hover {
+            background: #1B74D0;
+        }
+
+        /* ---------- SUMMARY ---------- */
+
+        .payment_summary_card {
+            background: #F7F9FC;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+        }
+
+        .payment_summary_card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .payment_summary_item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #E4E7EC;
+        }
+
+        .payment_summary_item:last-child {
+            border-bottom: none;
+        }
+
+        .payment_summary_item .label {
+            font-weight: 600;
+            color: #475467;
+        }
+
+        .payment_summary_item .value {
+            font-weight: 700;
+            color: #1D2939;
+        }
+
+        .payment_summary_item .value.total {
+            color: #2E90FA;
+            font-size: 20px;
+        }
+
+        .payment_note {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #667085;
+        }
+
+
+    </style>
     <main class="new_main-wrapper">
-        <section class="offers_hero">
-            <div data-container="" class="offers_hero_container">
-                <h1>Des offres conçues <span class="fc-blue">pour chaque organisation</span></h1>
-                <div class="system-spacer_24px"></div>
-                <p class="body-l">Choisissez la solution adaptée à vos besoins en matière de gestion RH, planning et paie.</p>
+        <section class="payment_hero">
+            <div class="container">
+                <h1>Paiement sécurisé</h1>
+                <p>Finalisez votre achat en toute sécurité. Le paiement est chiffré et protégé.</p>
             </div>
         </section>
 
-        <section class="offers_cards_section">
-            <div data-container="" class="offers_cards_wrapper">
+        <section class="payment_section">
+            <div data-container class= payment_grid">
+                <!-- RECAPITULATIF -->
+                <div class="payment_summary_card">
+                    <h3>Résumé de la commande</h3>
 
-                <!-- Offre Essentielle -->
-                <div id="essentielle" class="offer_card offer_card_yellow">
-                    <h3>Essentielle</h3>
-                    <p class="body-m fc-txt-secondary">Idéale pour digitaliser les bases de votre gestion RH.</p>
-                    <ul class="offer_list">
-                        <li>Planning digital</li>
-                        <li>Absences & congés</li>
-                        <li>Application mobile</li>
-                        <li>Support standard</li>
-                    </ul>
-                    <a href="subscribe.html" class="new_button small">Souscrire</a>
+                    <div class="payment_summary_item">
+                        <span class="label">Offre :</span>
+                        <span class="value" id="offerName">Essentielle</span>
+                    </div>
+
+                    <div class="payment_summary_item">
+                        <span class="label">Prix :</span>
+                        <span class="value" id="offerPrice">49€/mois</span>
+                    </div>
+
+                    <div class="payment_summary_item">
+                        <span class="label">Total à payer :</span>
+                        <span class="value total" id="offerTotal">49€</span>
+                    </div>
+
+                    <p class="payment_note">
+                        Le paiement récurrent peut être annulé à tout moment.
+                        Vous recevrez une facture par email.
+                    </p>
+                </div>
+                <!-- FORMULAIRE DE PAIEMENT -->
+                <div class="payment_form_card">
+                    <h2>Informations de paiement</h2>
+
+                    <form class="payment_form">
+
+                        <!-- identité -->
+                        <label>
+                            Nom complet
+                            <input type="text" placeholder="Jean Dupont" required>
+                        </label>
+
+                        <label>
+                            Email
+                            <input type="email" placeholder="jean.dupont@entreprise.com" required>
+                        </label>
+
+                        <!-- Adresse -->
+                        <label>
+                            Adresse
+                            <input type="text" placeholder="12 rue de Paris" required>
+                        </label>
+
+                        <label>
+                            Ville
+                            <input type="text" placeholder="Paris" required>
+                        </label>
+
+                        <label>
+                            Code postal
+                            <input type="text" placeholder="75001" required>
+                        </label>
+
+                        <!-- Carte bancaire -->
+                        <div class="payment_card_box">
+                            <label>
+                                Numéro de carte
+                                <input type="text" maxlength="19" placeholder="4242 4242 4242 4242" required>
+                            </label>
+
+                            <div class="payment_card_row">
+                                <label>
+                                    Expiration
+                                    <input type="text" placeholder="MM/AA" maxlength="5" required>
+                                </label>
+
+                                <label>
+                                    CVC
+                                    <input type="text" placeholder="123" maxlength="4" required>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button class="new_button big" type="submit">Payer maintenant</button>
+
+                    </form>
                 </div>
 
-                <!-- Offre Pro -->
-                <div id="pro" class="offer_card offer_card_blue">
-                    <h3>Pro</h3>
-                    <p class="body-m fc-txt-secondary">Le pack pour automatiser et simplifier vos processus.</p>
-                    <ul class="offer_list">
-                        <li>Signature électronique</li>
-                        <li>Onboarding autonome</li>
-                        <li>Badgeuse connectée</li>
-                        <li>Exports paie automatisés</li>
-                    </ul>
-                    <a href="subscribe.html" class="new_button small">Souscrire</a>
-                </div>
 
-                <!-- Offre Business -->
-                <div id="business" class="offer_card offer_card_purple">
-                    <h3>Business</h3>
-                    <p class="body-m fc-txt-secondary">La solution la plus complète pour les organisations multi-sites.</p>
-                    <ul class="offer_list">
-                        <li>Analyse & Datas</li>
-                        <li>Automatisations avancées</li>
-                        <li>API & intégrations</li>
-                        <li>Support Customer Success dédié</li>
-                    </ul>
-                    <a href="subscribe.html" class="new_button small">Souscrire</a>
-                </div>
 
-            </div>
-        </section>
-
-        <!-- Comparatif -->
-        <section class="offers_comparatif_section">
-            <div data-container="">
-                <h2>Comparatif des offres</h2>
-
-                <table class="offers_table">
-                    <thead>
-                    <tr>
-                        <th>Fonctionnalités</th>
-                        <th>Essentielle</th>
-                        <th>Pro</th>
-                        <th>Business</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Planning & Absences</td>
-                        <td>✔</td>
-                        <td>✔</td>
-                        <td>✔</td>
-                    </tr>
-                    <tr>
-                        <td>Signature électronique</td>
-                        <td>—</td>
-                        <td>✔</td>
-                        <td>✔</td>
-                    </tr>
-                    <tr>
-                        <td>Badgeuse connectée</td>
-                        <td>—</td>
-                        <td>✔</td>
-                        <td>✔</td>
-                    </tr>
-                    <tr>
-                        <td>Analyse & Datas</td>
-                        <td>—</td>
-                        <td>—</td>
-                        <td>✔</td>
-                    </tr>
-                    <tr>
-                        <td>API & intégrations</td>
-                        <td>—</td>
-                        <td>—</td>
-                        <td>✔</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section class="offers_cta">
-            <div data-container="" class="offers_cta_container">
-                <h2>Besoin d’un accompagnement pour choisir ?</h2>
-                <div class="system-spacer_16px"></div>
-                <p class="body-m">Notre équipe RH vous aide à sélectionner l’offre idéale selon votre organisation.</p>
-                <div class="system-spacer_24px"></div>
-                <a href="/formulaire-demonstration-badakan" class="new_button big">Souscrire</a>
             </div>
         </section>
 

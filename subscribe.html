@@ -36,7 +36,6 @@
     <script type="text/javascript" async=""
             src="./resources/bat.js"></script>
 
-
     <style>
         /* Responsive fix pour les "lignes grises" sur mobile */
         @media screen and (max-width: 479px) {
@@ -971,222 +970,6 @@ Removing this could affect how your website behave.
                         }
                     }
 
-                    /* ------------------------------------
-                       SECTION HERO
-                    ------------------------------------ */
-
-                    .offers_hero {
-                        background: #F7F9FC;
-                        padding: 100px 0;
-                        text-align: center;
-                    }
-
-                    .offers_hero h1 {
-                        font-size: 48px;
-                        font-weight: 700;
-                        color: #1D2939;
-                    }
-
-                    .offers_hero p {
-                        font-size: 20px;
-                        color: #475467;
-                        max-width: 680px;
-                        margin: auto;
-                    }
-
-
-                    /* ------------------------------------
-                       CARDS SECTION
-                    ------------------------------------ */
-
-                    .offers_cards_section {
-                        padding: 80px 0;
-                        background: #FFFFFF;
-                    }
-
-                    .offers_cards_wrapper {
-                        display: grid;
-                        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                        gap: 32px;
-                    }
-
-
-                    /* ------------------------------------
-                       OFFRE CARDS
-                    ------------------------------------ */
-
-                    .offer_card {
-                        padding: 32px;
-                        border-radius: 16px;
-                        box-shadow: 0px 4px 16px rgba(0,0,0,0.07);
-                        background: white;
-                        transition: 0.25s ease;
-                        display: flex;
-                        flex-direction: column;
-                    }
-
-                    .offer_card:hover {
-                        transform: translateY(-5px);
-                        box-shadow: 0px 6px 20px rgba(0,0,0,0.12);
-                    }
-
-                    /* Title */
-                    .offer_card h3 {
-                        font-size: 24px;
-                        font-weight: 700;
-                        color: #1D2939;
-                        margin-bottom: 8px;
-                    }
-
-                    /* Description */
-                    .offer_card p {
-                        font-size: 16px;
-                        color: #667085;
-                        margin-bottom: 24px;
-                    }
-
-                    /* List */
-                    .offer_list {
-                        list-style: none;
-                        padding: 0;
-                        margin: 0 0 32px 0;
-                    }
-
-                    .offer_list li {
-                        font-size: 15px;
-                        padding: 8px 0;
-                        display: flex;
-                        align-items: center;
-                        color: #475467;
-                    }
-
-                    .offer_list li::before {
-                        content: "✔";
-                        color: #2E90FA;
-                        margin-right: 8px;
-                        font-size: 14px;
-                    }
-
-                    /* ------------------------------------
-                       COLORS DIFFERENCES PAR OFFRE
-                    ------------------------------------ */
-
-                    .offer_card_yellow {
-                        border-top: 6px solid #FDC700;
-                    }
-
-                    .offer_card_blue {
-                        border-top: 6px solid #2E90FA;
-                    }
-
-                    .offer_card_purple {
-                        border-top: 6px solid #9B4DFF;
-                    }
-
-                    /* ------------------------------------
-                       COMPARATIF TABLE
-                    ------------------------------------ */
-
-                    .offers_comparatif_section {
-                        padding: 90px 0;
-                        background: #F9FAFB;
-                    }
-
-                    .offers_comparatif_section h2 {
-                        text-align: center;
-                        font-size: 36px;
-                        margin-bottom: 40px;
-                    }
-
-                    .offers_table {
-                        width: 100%;
-                        border-collapse: collapse;
-                        background: #FFFFFF;
-                        border-radius: 16px;
-                        overflow: hidden;
-                        box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-                    }
-
-                    .offers_table thead th {
-                        background: #F2F4F7;
-                        padding: 16px;
-                        font-weight: 600;
-                        font-size: 16px;
-                        color: #344054;
-                        text-align: center;
-                    }
-
-                    .offers_table td {
-                        padding: 16px;
-                        text-align: center;
-                        color: #475467;
-                        border-bottom: 1px solid #E4E7EC;
-                    }
-
-                    .offers_table tbody tr:last-child td {
-                        border-bottom: none;
-                    }
-
-
-                    /* ------------------------------------
-                       CTA FINALE
-                    ------------------------------------ */
-
-                    .offers_cta {
-                        padding: 100px 0;
-                        background: #2E90FA;
-                        color: white;
-                        text-align: center;
-                    }
-
-                    .offers_cta h2 {
-                        font-size: 36px;
-                        margin-bottom: 16px;
-                    }
-
-                    .offers_cta p {
-                        font-size: 18px;
-                        opacity: 0.95;
-                        margin-bottom: 32px;
-                    }
-
-                    .offers_cta .new_button.big {
-                        background: #fff;
-                        color: #2E90FA;
-                        font-weight: 700;
-                    }
-
-                    .offers_cta .new_button.big:hover {
-                        background: #F2F4F7;
-                    }
-
-
-                    /* ------------------------------------
-                       RESPONSIVE
-                    ------------------------------------ */
-
-                    @media (max-width: 768px) {
-
-                        .offers_hero h1 {
-                            font-size: 34px;
-                        }
-
-                        .offers_hero p {
-                            font-size: 18px;
-                        }
-
-                        .offers_cards_section {
-                            padding: 60px 0;
-                        }
-
-                        .offers_cta h2 {
-                            font-size: 28px;
-                        }
-
-                        .offers_cta p {
-                            font-size: 16px;
-                        }
-                    }
 
 
                 </style>
@@ -1194,119 +977,247 @@ Removing this could affect how your website behave.
         </div>
         <div class="w-nav-overlay" data-wf-ignore="" id="w-nav-overlay-0"></div>
     </div>
+    <style>
+
+        /* ------------------------------------
+           HERO SECTION
+        ------------------------------------ */
+
+        .subscribe_hero {
+            text-align: center;
+            padding: 90px 0;
+            background: #F8FAFC;
+        }
+
+        .subscribe_hero h1 {
+            font-size: 44px;
+            font-weight: 700;
+            color: #1D2939;
+        }
+
+        .subscribe_hero p {
+            font-size: 18px;
+            color: #475467;
+            max-width: 650px;
+            margin: 18px auto 0;
+        }
+
+
+        /* ------------------------------------
+           FORM + RECAP GRID
+        ------------------------------------ */
+
+        .subscribe_form_section {
+            padding: 80px 0;
+            background: #FFFFFF;
+        }
+
+        .subscribe_grid {
+            display: grid;
+            gap: 40px;
+            grid-template-columns: 1fr 350px;
+        }
+
+        @media (max-width: 900px) {
+            .subscribe_grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        /* ------------------------------------
+           FORM CARD
+        ------------------------------------ */
+
+        .subscribe_form_card {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        }
+
+        .subscribe_form_card h2 {
+            margin-bottom: 16px;
+            font-size: 28px;
+        }
+
+
+        /* FORM STYLE */
+
+        .subscribe_form label {
+            display: block;
+            margin-bottom: 18px;
+            font-weight: 600;
+            color: #344054;
+        }
+
+        .subscribe_form input,
+        .subscribe_form select {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 10px;
+            border: 1px solid #D0D5DD;
+            margin-top: 8px;
+            font-size: 15px;
+            color: #1D2939;
+            transition: 0.2s;
+        }
+
+        .subscribe_form input:focus,
+        .subscribe_form select:focus {
+            border-color: #2E90FA;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(46,144,250,0.15);
+        }
+
+        .new_button.big {
+            margin-top: 20px;
+            width: 100%;
+        }
+
+
+        /* ------------------------------------
+           RECAP OFFRE
+        ------------------------------------ */
+
+        .subscribe_offer_card {
+            background: #F7F9FC;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+        }
+
+        .subscribe_offer_card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .subscribe_offer_summary {
+            background: white;
+            padding: 12px 16px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            border: 1px solid #E4E7EC;
+        }
+
+        .offer_label {
+            font-weight: 600;
+            color: #475467;
+        }
+
+        .offer_value {
+            font-weight: 700;
+            color: #2E90FA;
+        }
+
+        .subscribe_offer_list {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        .subscribe_offer_list li {
+            padding: 8px 0;
+            font-size: 15px;
+            color: #475467;
+        }
+
+        .subscribe_offer_list li::before {
+            content: "✔";
+            color: #2E90FA;
+            margin-right: 8px;
+        }
+
+        .subscribe_small_text {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #667085;
+        }
+
+
+
+    </style>
     <main class="new_main-wrapper">
-        <section class="offers_hero">
-            <div data-container="" class="offers_hero_container">
-                <h1>Des offres conçues <span class="fc-blue">pour chaque organisation</span></h1>
-                <div class="system-spacer_24px"></div>
-                <p class="body-l">Choisissez la solution adaptée à vos besoins en matière de gestion RH, planning et paie.</p>
+        <section class="subscribe_hero">
+            <div data-container="" class="subscribe_hero_container">
+                <h1>Souscription à votre offre</h1>
+                <p class="body-l">
+                    Finalisez votre inscription en quelques secondes. Notre équipe vous accompagne si besoin.
+                </p>
             </div>
         </section>
 
-        <section class="offers_cards_section">
-            <div data-container="" class="offers_cards_wrapper">
+        <section class="subscribe_form_section">
+            <div data-container="" class="subscribe_grid">
 
-                <!-- Offre Essentielle -->
-                <div id="essentielle" class="offer_card offer_card_yellow">
-                    <h3>Essentielle</h3>
-                    <p class="body-m fc-txt-secondary">Idéale pour digitaliser les bases de votre gestion RH.</p>
-                    <ul class="offer_list">
-                        <li>Planning digital</li>
-                        <li>Absences & congés</li>
-                        <li>Application mobile</li>
-                        <li>Support standard</li>
-                    </ul>
-                    <a href="subscribe.html" class="new_button small">Souscrire</a>
+                <!-- FORMULAIRE -->
+                <div class="subscribe_form_card">
+                    <h2>Informations de souscription</h2>
+                    <div class="system-spacer_24px"></div>
+
+                    <form class="subscribe_form" action="payment.html">
+
+                        <label>
+                            Nom complet
+                            <input type="text" placeholder="Jean Dupont" required>
+                        </label>
+
+                        <label>
+                            Email professionnel
+                            <input type="email" placeholder="jean.dupont@entreprise.com" required>
+                        </label>
+
+                        <label>
+                            Téléphone
+                            <input type="tel" placeholder="+33 6 12 34 56 78">
+                        </label>
+
+                        <label>
+                            Entreprise
+                            <input type="text" placeholder="Nom de votre entreprise" required>
+                        </label>
+
+                        <label>
+                            Offre choisie
+                            <select required>
+                                <option value="Essentielle">Essentielle</option>
+                                <option value="Pro">Pro</option>
+                                <option value="Business">Business</option>
+                            </select>
+                        </label>
+
+                        <button type="submit" class="new_button big">Souscrire maintenant</button>
+
+                    </form>
                 </div>
 
-                <!-- Offre Pro -->
-                <div id="pro" class="offer_card offer_card_blue">
-                    <h3>Pro</h3>
-                    <p class="body-m fc-txt-secondary">Le pack pour automatiser et simplifier vos processus.</p>
-                    <ul class="offer_list">
-                        <li>Signature électronique</li>
-                        <li>Onboarding autonome</li>
-                        <li>Badgeuse connectée</li>
-                        <li>Exports paie automatisés</li>
-                    </ul>
-                    <a href="subscribe.html" class="new_button small">Souscrire</a>
-                </div>
+                <!-- RECAP OFFRE -->
+                <div class="subscribe_offer_card">
+                    <h3>Votre offre sélectionnée</h3>
+                    <p class="fc-txt-secondary">Choisie depuis la page Offres</p>
 
-                <!-- Offre Business -->
-                <div id="business" class="offer_card offer_card_purple">
-                    <h3>Business</h3>
-                    <p class="body-m fc-txt-secondary">La solution la plus complète pour les organisations multi-sites.</p>
-                    <ul class="offer_list">
-                        <li>Analyse & Datas</li>
-                        <li>Automatisations avancées</li>
-                        <li>API & intégrations</li>
-                        <li>Support Customer Success dédié</li>
+                    <div class="subscribe_offer_summary">
+                        <span class="offer_label">Offre :</span>
+                        <span class="offer_value" id="offerChosen">Essentielle</span>
+                    </div>
+
+                    <ul class="subscribe_offer_list">
+                        <li id="l1">Planning & absences</li>
+                        <li id="l2">Application mobile</li>
+                        <li id="l3">Support standard</li>
                     </ul>
-                    <a href="subscribe.html" class="new_button small">Souscrire</a>
+
+                    <p class="subscribe_small_text">
+                        Vous pourrez modifier votre offre à tout moment en contactant notre équipe.
+                    </p>
                 </div>
 
             </div>
         </section>
 
-        <!-- Comparatif -->
-        <section class="offers_comparatif_section">
-            <div data-container="">
-                <h2>Comparatif des offres</h2>
-
-                <table class="offers_table">
-                    <thead>
-                    <tr>
-                        <th>Fonctionnalités</th>
-                        <th>Essentielle</th>
-                        <th>Pro</th>
-                        <th>Business</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Planning & Absences</td>
-                        <td>✔</td>
-                        <td>✔</td>
-                        <td>✔</td>
-                    </tr>
-                    <tr>
-                        <td>Signature électronique</td>
-                        <td>—</td>
-                        <td>✔</td>
-                        <td>✔</td>
-                    </tr>
-                    <tr>
-                        <td>Badgeuse connectée</td>
-                        <td>—</td>
-                        <td>✔</td>
-                        <td>✔</td>
-                    </tr>
-                    <tr>
-                        <td>Analyse & Datas</td>
-                        <td>—</td>
-                        <td>—</td>
-                        <td>✔</td>
-                    </tr>
-                    <tr>
-                        <td>API & intégrations</td>
-                        <td>—</td>
-                        <td>—</td>
-                        <td>✔</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section class="offers_cta">
-            <div data-container="" class="offers_cta_container">
-                <h2>Besoin d’un accompagnement pour choisir ?</h2>
-                <div class="system-spacer_16px"></div>
-                <p class="body-m">Notre équipe RH vous aide à sélectionner l’offre idéale selon votre organisation.</p>
-                <div class="system-spacer_24px"></div>
-                <a href="/formulaire-demonstration-badakan" class="new_button big">Souscrire</a>
-            </div>
-        </section>
 
     </main>
     <footer id="footer" class="footer_section">
