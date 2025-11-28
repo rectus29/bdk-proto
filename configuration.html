@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuration de votre abonnement | Badakan</title>
+    <link href="./resources/badakan.webflow.shared.631738204.min.css" rel="stylesheet" type="text/css">
+    <script async src="./resources/clarity.js"></script>
+    <script async src="./resources/187223170.js"></script>
+    <script async src="./resources/4109337.js" id="hs-analytics"></script>
+    <script async src="./resources/banner.js" id="cookieBanner-4109337" data-cookieconsent="ignore" data-hs-ignore="true" data-loader="hs-scriptloader" data-hsjs-portal="4109337" data-hsjs-env="prod" data-hsjs-hublet="na1"></script>
+    <style>
+        body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+        .cfg_wrapper { max-width: 1100px; margin: 0 auto; padding: 24px; }
+        .cfg_header { display:flex; align-items:center; gap:12px; margin: 12px 0 24px; }
+        .cfg_header img { height: 28px; }
+        .cfg_layout { display:grid; grid-template-columns: 1.3fr .7fr; gap:24px; }
+        .cfg_card { background:#fff; border:1px solid #E5E7EB; border-radius:16px; padding:24px; box-shadow:0 10px 20px rgba(2,6,23,0.05); }
+        .cfg_card h2 { margin:0 0 12px; color:#0F172A; }
+        .cfg_card h3 { margin:0 0 12px; color:#0F172A; font-size:18px; }
+        label { display:block; font-weight:600; color:#0F172A; margin:14px 0 8px; }
+        input[type="text"], select { width:100%; border:1px solid #E5E7EB; border-radius:10px; padding:10px 12px; font-size:14px; }
+        .range_row { display:grid; grid-template-columns: 1fr auto; align-items:center; gap:10px; }
+        input[type="range"] { width:100%; }
+        .value_chip { background:#F1F5F9; color:#0F172A; border-radius:999px; padding:6px 10px; font-weight:600; min-width:64px; text-align:center; }
+        .price_box { text-align:center; }
+        .price_value { font-size:36px; font-weight:800; color:#0F172A; }
+        .price_hint { color:#475569; }
+        .new_button.big { width:100%; padding:14px 16px; border-radius:10px; font-weight:700; }
+        .muted { color:#64748B; font-size:13px; }
+        @media (max-width: 767px){ .cfg_layout{ grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body class="new_body">
+<div class="cfg_wrapper">
+    <div class="cfg_header">
+        <a href="index.html"><img src="./resources/5f082e6b268599279b786aa3_badakan-logo.svg" alt="Badakan"></a>
+        <div class="muted">Étape 2/3 — Configuration</div>
+    </div>
+
+    <div class="cfg_layout">
+        <div class="cfg_card">
+            <h2>Configurez votre abonnement</h2>
+            <p class="muted">Ces informations nous permettent d’ajuster l’offre à votre organisation.</p>
+
+            <form id="configForm">
+                <label for="ccInput">Convention collective</label>
+                <select id="ccInput" name="conventionCollective" required>
+                    <option value="">Sélectionner...</option>
+                    <option>Hôtellerie / Cafés / Restaurants (HCR)</option>
+                    <option>Syntec (Bureaux d'études)</option>
+                    <option>Commerce de détail</option>
+                    <option>Boulangerie - Pâtisserie</option>
+                    <option>Transport routier</option>
+                    <option>Propreté</option>
+                    <option>Sécurité privée</option>
+                    <option>Métallurgie</option>
+                    <option>Pharmacie d'officine</option>
+                    <option>Immobilier</option>
+                    <option>HCR saisonnier</option>
+                    <option>Autre</option>
+                </select>
+
+                <label for="usersRange">Nombre d'utilisateurs</label>
+                <div class="range_row">
+                    <input type="range" id="usersRange" name="users" min="1" max="100" value="1">
+                    <div class="value_chip"><span id="usersVal">1</span></div>
+                </div>
+
+                <label for="collabRange">Nombre de collaborateurs</label>
+                <div class="range_row">
+                    <input type="range" id="collabRange" name="collaborators" min="1" max="500" value="1">
+                    <div class="value_chip"><span id="collabVal">1</span></div>
+                </div>
+
+                <label for="contractsRange">Nombre de contrats longs</label>
+                <div class="range_row">
+                    <input type="range" id="contractsRange" name="longContracts" min="1" max="200" value="1">
+                    <div class="value_chip"><span id="contractsVal">1</span></div>
+                </div>
+
+                <label for="missionsRange">Missions d'extra mensuelles</label>
+                <div class="range_row">
+                    <input type="range" id="missionsRange" name="missions" min="1" max="200" value="1">
+                    <div class="value_chip"><span id="missionsVal">1</span></div>
+                </div>
+
+                <label for="payrollSelect">Logiciel de paie</label>
+                <select id="payrollSelect" name="payroll" required>
+                    <option value="">Sélectionner...</option>
+                    <option>Sage</option>
+                    <option>Cegid</option>
+                    <option>ADP</option>
+                    <option>PayFit</option>
+                    <option>Nibelis</option>
+                    <option>Silae</option>
+                    <option>Tempo</option>
+                    <option>Autre</option>
+                </select>
+
+                <div class="system-spacer_24px"></div>
+                <div class="cfg_card price_box" style="padding:16px">
+                    <div class="price_hint">Votre prix estimé</div>
+                    <div class="price_value"><span id="priceValue">49</span>€/mois</div>
+                    <div class="muted">Ce prix évolue selon vos volumes. Min: 49€/mois, Max: 500€/mois.</div>
+                </div>
+
+                <div class="system-spacer_16px"></div>
+                <button class="new_button big gradient" type="submit" id="toPaymentBtn">Continuer vers le paiement</button>
+            </form>
+        </div>
+
+        <div class="cfg_card">
+            <h3>Récapitulatif</h3>
+            <div class="system-spacer_8px"></div>
+            <div class="muted">Offre sélectionnée: <strong id="offerRecap">Essentielle</strong></div>
+            <div class="system-spacer_8px"></div>
+            <ul style="list-style: none; padding:0; margin:0; color:#334155;">
+                <li>Utilisateurs: <strong id="usersRecap">1</strong></li>
+                <li>Collaborateurs: <strong id="collabRecap">1</strong></li>
+                <li>Contrats longs: <strong id="contractsRecap">1</strong></li>
+                <li>Extras mensuels: <strong id="missionsRecap">1</strong></li>
+                <li>Paie: <strong id="payrollRecap">—</strong></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- HubSpot Embed -->
+<script type="text/javascript" id="hs-script-loader" async defer src="./resources/4109337(1).js"></script>
+
+<script>
+(function(){
+    var OFFER_KEY = 'bdk_selected_offer';
+    var SUB_KEY = 'bdk_subscribe_data';
+    var CONFIG_KEY = 'bdk_configuration_data';
+
+    var normalizeOffer = function(v){
+        var list=['Essentielle','Pro','Business'];
+        if(!v) return 'Essentielle';
+        v=String(v).trim();
+        for(var i=0;i<list.length;i++){ if(list[i].toLowerCase()===v.toLowerCase()) return list[i]; }
+        return 'Essentielle';
+    };
+
+    var els = {
+        cc: document.getElementById('ccInput'),
+        users: document.getElementById('usersRange'), usersVal: document.getElementById('usersVal'),
+        collab: document.getElementById('collabRange'), collabVal: document.getElementById('collabVal'),
+        contracts: document.getElementById('contractsRange'), contractsVal: document.getElementById('contractsVal'),
+        missions: document.getElementById('missionsRange'), missionsVal: document.getElementById('missionsVal'),
+        payroll: document.getElementById('payrollSelect'),
+        price: document.getElementById('priceValue'),
+        offerRecap: document.getElementById('offerRecap'),
+        usersRecap: document.getElementById('usersRecap'), collabRecap: document.getElementById('collabRecap'),
+        contractsRecap: document.getElementById('contractsRecap'), missionsRecap: document.getElementById('missionsRecap'),
+        payrollRecap: document.getElementById('payrollRecap'),
+        form: document.getElementById('configForm')
+    };
+
+    // Charge offre et config existantes
+    var offer = 'Essentielle';
+    try {
+        var storedOffer = localStorage.getItem(OFFER_KEY);
+        offer = normalizeOffer(storedOffer);
+    } catch(e) {}
+    try {
+        var sub = JSON.parse(localStorage.getItem(SUB_KEY)||'{}');
+        if (sub && sub.offer) offer = normalizeOffer(sub.offer);
+    } catch(e) {}
+    els.offerRecap.textContent = offer;
+
+    // Restaurer config si disponible
+    try {
+        var cfg = JSON.parse(localStorage.getItem(CONFIG_KEY)||'{}');
+        if (cfg.conventionCollective) els.cc.value = cfg.conventionCollective;
+        if (cfg.users) els.users.value = cfg.users;
+        if (cfg.collaborators) els.collab.value = cfg.collaborators;
+        if (cfg.longContracts) els.contracts.value = cfg.longContracts;
+        if (cfg.missions) els.missions.value = cfg.missions;
+        if (cfg.payroll) els.payroll.value = cfg.payroll;
+    } catch(e) {}
+
+    function updateChips(){
+        els.usersVal.textContent = els.users.value;
+        els.collabVal.textContent = els.collab.value;
+        els.contractsVal.textContent = els.contracts.value;
+        els.missionsVal.textContent = els.missions.value;
+        els.usersRecap.textContent = els.users.value;
+        els.collabRecap.textContent = els.collab.value;
+        els.contractsRecap.textContent = els.contracts.value;
+        els.missionsRecap.textContent = els.missions.value;
+        els.payrollRecap.textContent = els.payroll.value || '—';
+    }
+
+    function priceFactorForOffer(of){
+        if (of === 'Pro') return 1.25;
+        if (of === 'Business') return 1.6;
+        return 1.0;
+    }
+
+    function computePrice(){
+        var u = parseInt(els.users.value||'1',10);
+        var c = parseInt(els.collab.value||'1',10);
+        var cl = parseInt(els.contracts.value||'1',10);
+        var m = parseInt(els.missions.value||'1',10);
+
+        // pondérations simples
+        var points = (u*2.0) + (c*0.25) + (cl*0.5) + (m*0.25);
+        var base = 49;
+        var price = base + points*1.5;
+        price = price * priceFactorForOffer(offer);
+        if (price < 49) price = 49;
+        if (price > 500) price = 500;
+        price = Math.round(price);
+        return price;
+    }
+
+    function renderPrice(){
+        var p = computePrice();
+        els.price.textContent = String(p);
+    }
+
+    ['input','change'].forEach(function(evt){
+        [els.users, els.collab, els.contracts, els.missions, els.payroll].forEach(function(el){
+            el.addEventListener(evt, function(){ updateChips(); renderPrice(); save(); });
+        })
+    });
+
+    function save(){
+        try {
+            var data = {
+                conventionCollective: els.cc.value.trim(),
+                users: parseInt(els.users.value,10),
+                collaborators: parseInt(els.collab.value,10),
+                longContracts: parseInt(els.contracts.value,10),
+                missions: parseInt(els.missions.value,10),
+                payroll: els.payroll.value,
+                offer: offer,
+                monthlyPrice: computePrice()
+            };
+            localStorage.setItem(CONFIG_KEY, JSON.stringify(data));
+        } catch(e) {}
+    }
+
+    // Init affichage
+    updateChips();
+    renderPrice();
+    save();
+
+    els.form.addEventListener('submit', function(e){
+        e.preventDefault();
+        // Validation minimale
+        if (!els.cc.value.trim() || !els.payroll.value){
+            alert('Merci de renseigner la convention collective et votre logiciel de paie.');
+            return;
+        }
+        save();
+        window.location.href = 'payment.html';
+    });
+})();
+</script>
+</body>
+</html>

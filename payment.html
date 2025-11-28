@@ -1006,7 +1006,7 @@ Removing this could affect how your website behave.
 
         .payment_grid {
             display: grid;
-            grid-template-columns: 1fr 350px;
+            grid-template-columns: 1fr 1fr;
             gap: 40px;
         }
 
@@ -1143,7 +1143,7 @@ Removing this could affect how your website behave.
         </section>
 
         <section class="payment_section">
-            <div data-container class= payment_grid">
+            <div data-container class="payment_grid">
                 <!-- RECAPITULATIF -->
                 <div class="payment_summary_card">
                     <h3>Résumé de la commande</h3>
@@ -1163,6 +1163,32 @@ Removing this could affect how your website behave.
                         <span class="value total" id="offerTotal">49€</span>
                     </div>
 
+                    <div class="system-spacer_12px"></div>
+                    <div class="payment_summary_item">
+                        <span class="label">Convention collective :</span>
+                        <span class="value" id="cfgCc">—</span>
+                    </div>
+                    <div class="payment_summary_item">
+                        <span class="label">Utilisateurs :</span>
+                        <span class="value" id="cfgUsers">—</span>
+                    </div>
+                    <div class="payment_summary_item">
+                        <span class="label">Collaborateurs :</span>
+                        <span class="value" id="cfgCollab">—</span>
+                    </div>
+                    <div class="payment_summary_item">
+                        <span class="label">Contrats longs :</span>
+                        <span class="value" id="cfgContracts">—</span>
+                    </div>
+                    <div class="payment_summary_item">
+                        <span class="label">Extras mensuels :</span>
+                        <span class="value" id="cfgMissions">—</span>
+                    </div>
+                    <div class="payment_summary_item">
+                        <span class="label">Logiciel de paie :</span>
+                        <span class="value" id="cfgPayroll">—</span>
+                    </div>
+
                     <p class="payment_note">
                         Le paiement récurrent peut être annulé à tout moment.
                         Vous recevrez une facture par email.
@@ -1172,17 +1198,17 @@ Removing this could affect how your website behave.
                 <div class="payment_form_card">
                     <h2>Informations de paiement</h2>
 
-                    <form class="payment_form">
+                    <form class="payment_form" id="paymentForm">
 
                         <!-- identité -->
                         <label>
                             Nom complet
-                            <input type="text" placeholder="Jean Dupont" required>
+                            <input id="payFullName" name="fullName" type="text" placeholder="Jean Dupont" required>
                         </label>
 
                         <label>
                             Email
-                            <input type="email" placeholder="jean.dupont@entreprise.com" required>
+                            <input id="payEmail" name="email" type="email" placeholder="jean.dupont@entreprise.com" required>
                         </label>
 
                         <!-- Adresse -->
@@ -1465,6 +1491,62 @@ Removing this could affect how your website behave.
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+<!-- Conserver et afficher l'offre sélectionnée -->
+<script>
+    (function () {
+        try {
+            var OFFER_KEY = 'bdk_selected_offer';
+            var SUB_KEY = 'bdk_subscribe_data';
+            var VALID = ['Essentielle', 'Pro', 'Business'];
+            var PRICES = {
+                'Essentielle': { monthly: '49€/mois', total: '49€' },
+                'Pro': { monthly: '99€/mois', total: '99€' },
+                'Business': { monthly: '199€/mois', total: '199€' }
+            };
+
+            var params = new URLSearchParams(window.location.search);
+            var fromUrl = params.get('offer');
+            var stored = null;
+            try { stored = localStorage.getItem(OFFER_KEY); } catch (e) { stored = null; }
+
+            function normalize(v) {
+                if (!v) return null;
+                v = String(v).trim();
+                for (var i = 0; i < VALID.length; i++) {
+                    if (VALID[i].toLowerCase() === v.toLowerCase()) return VALID[i];
+                }
+                return null;
+            }
+
+            var chosen = normalize(fromUrl) || normalize(stored) || 'Essentielle';
+
+            // Mémorise pour les prochaines visites
+            try { localStorage.setItem(OFFER_KEY, chosen); } catch (e) {}
+
+            // Met à jour l'UI
+            var nameEl = document.getElementById('offerName');
+            if (nameEl) nameEl.textContent = chosen;
+            var priceEl = document.getElementById('offerPrice');
+            var totalEl = document.getElementById('offerTotal');
+            var p = PRICES[chosen] || PRICES['Essentielle'];
+            if (priceEl) priceEl.textContent = p.monthly;
+            if (totalEl) totalEl.textContent = p.total;
+
+            // Pré-remplir les champs nom/email s'ils existent
+            try {
+                var sub = JSON.parse(localStorage.getItem(SUB_KEY) || '{}');
+                var fullNameInput = document.getElementById('payFullName');
+                var emailInput = document.getElementById('payEmail');
+                if (fullNameInput && sub.fullName) fullNameInput.value = sub.fullName;
+                if (emailInput && sub.email) emailInput.value = sub.email;
+            } catch (e) {}
+        } catch (err) {
+            // silencieux pour ne pas bloquer le paiement
+            if (window && window.console && console.warn) console.warn('Offer retain error:', err);
+        }
+    })();
+</script>
+
 <!-- Script changing EN date on FR date for the blog -->
 <script>
     console.clear();
@@ -1589,5 +1671,97 @@ Removing this could affect how your website behave.
 <script type="text/javascript" id="hs-script-loader" async="" defer=""
         src="./resources/4109337(1).js"></script>
 <!-- End of HubSpot Embed Code -->
+<script>
+    // Charger la configuration et mettre à jour le récap de paiement
+    (function(){
+        var OFFER_KEY = 'bdk_selected_offer';
+        var SUB_KEY = 'bdk_subscribe_data';
+        var CONFIG_KEY = 'bdk_configuration_data';
+
+        function normOffer(v){
+            var list=['Essentielle','Pro','Business'];
+            if(!v) return 'Essentielle';
+            v=String(v).trim();
+            for(var i=0;i<list.length;i++){ if(list[i].toLowerCase()===v.toLowerCase()) return list[i]; }
+            return 'Essentielle';
+        }
+
+        function priceFactorForOffer(of){
+            if (of === 'Pro') return 1.25;
+            if (of === 'Business') return 1.6;
+            return 1.0;
+        }
+        function computePrice(cfg, offer){
+            var u = parseInt((cfg && cfg.users) || 1,10);
+            var c = parseInt((cfg && cfg.collaborators) || 1,10);
+            var cl = parseInt((cfg && cfg.longContracts) || 1,10);
+            var m = parseInt((cfg && cfg.missions) || 1,10);
+            var points = (u*2.0) + (c*0.5) + (cl*1.0) + (m*0.75);
+            var base = 49;
+            var price = base + points*3.0;
+            price = price * priceFactorForOffer(offer);
+            if (price < 49) price = 49;
+            if (price > 1200) price = 1200;
+            return Math.round(price);
+        }
+
+        var offerNameEl = document.getElementById('offerName');
+        var offerPriceEl = document.getElementById('offerPrice');
+        var offerTotalEl = document.getElementById('offerTotal');
+        var cfgCcEl = document.getElementById('cfgCc');
+        var cfgUsersEl = document.getElementById('cfgUsers');
+        var cfgCollabEl = document.getElementById('cfgCollab');
+        var cfgContractsEl = document.getElementById('cfgContracts');
+        var cfgMissionsEl = document.getElementById('cfgMissions');
+        var cfgPayrollEl = document.getElementById('cfgPayroll');
+
+        var offer = 'Essentielle';
+        try {
+            var storedOffer = localStorage.getItem(OFFER_KEY);
+            offer = normOffer(storedOffer);
+        } catch(e) {}
+        try {
+            var sub = JSON.parse(localStorage.getItem(SUB_KEY)||'{}');
+            if (sub && sub.offer) offer = normOffer(sub.offer);
+            // pré-remplir identité si dispo
+            if (sub && sub.fullName) { var f=document.getElementById('payFullName'); if (f) f.value=sub.fullName; }
+            if (sub && sub.email) { var em=document.getElementById('payEmail'); if (em) em.value=sub.email; }
+        } catch(e) {}
+
+        var cfg = null;
+        try { cfg = JSON.parse(localStorage.getItem(CONFIG_KEY) || 'null'); } catch(e) {}
+
+        // Si pas de configuration, retour à l'étape précédente
+        if (!cfg) {
+            console.warn('Aucune configuration trouvée, redirection vers configuration.html');
+            try { window.location.replace('configuration.html'); return; } catch(e) {}
+        }
+
+        if (offerNameEl) offerNameEl.textContent = offer;
+        if (cfgCcEl) cfgCcEl.textContent = cfg.conventionCollective || '—';
+        if (cfgUsersEl) cfgUsersEl.textContent = cfg.users != null ? String(cfg.users) : '—';
+        if (cfgCollabEl) cfgCollabEl.textContent = cfg.collaborators != null ? String(cfg.collaborators) : '—';
+        if (cfgContractsEl) cfgContractsEl.textContent = cfg.longContracts != null ? String(cfg.longContracts) : '—';
+        if (cfgMissionsEl) cfgMissionsEl.textContent = cfg.missions != null ? String(cfg.missions) : '—';
+        if (cfgPayrollEl) cfgPayrollEl.textContent = cfg.payroll || '—';
+
+        var price = (cfg && typeof cfg.monthlyPrice === 'number') ? cfg.monthlyPrice : computePrice(cfg, offer);
+        if (offerPriceEl) offerPriceEl.textContent = price + '€' + '/mois';
+        if (offerTotalEl) offerTotalEl.textContent = price + '€';
+    })();
+</script>
+<script>
+    // Redirection vers la page de succès après la soumission du formulaire de paiement
+    (function () {
+        var form = document.getElementById('paymentForm');
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                // Ici on simule un paiement réussi et on redirige vers la page de succès
+                window.location.href = 'success.html';
+            });
+        }
+    })();
+</script>
 </body>
 </html>

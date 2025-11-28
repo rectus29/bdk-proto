@@ -1158,38 +1158,38 @@ Removing this could affect how your website behave.
                     <h2>Informations de souscription</h2>
                     <div class="system-spacer_24px"></div>
 
-                    <form class="subscribe_form" action="payment.html">
+                    <form class="subscribe_form" id="subscribeForm" action="configuration.html">
 
                         <label>
                             Nom complet
-                            <input type="text" placeholder="Jean Dupont" required>
+                            <input id="fullNameInput" name="fullName" type="text" placeholder="Jean Dupont" required>
                         </label>
 
                         <label>
                             Email professionnel
-                            <input type="email" placeholder="jean.dupont@entreprise.com" required>
+                            <input id="emailInput" name="email" type="email" placeholder="jean.dupont@entreprise.com" required>
                         </label>
 
                         <label>
                             Téléphone
-                            <input type="tel" placeholder="+33 6 12 34 56 78">
+                            <input id="phoneInput" name="phone" type="tel" placeholder="+33 6 12 34 56 78">
                         </label>
 
                         <label>
                             Entreprise
-                            <input type="text" placeholder="Nom de votre entreprise" required>
+                            <input id="companyInput" name="company" type="text" placeholder="Nom de votre entreprise" required>
                         </label>
 
                         <label>
                             Offre choisie
-                            <select required>
+                            <select id="offerSelect" name="offer" required>
                                 <option value="Essentielle">Essentielle</option>
                                 <option value="Pro">Pro</option>
                                 <option value="Business">Business</option>
                             </select>
                         </label>
 
-                        <button type="submit" class="new_button big">Souscrire maintenant</button>
+                        <button type="submit" class="new_button">Souscrire maintenant</button>
 
                     </form>
                 </div>
@@ -1220,6 +1220,120 @@ Removing this could affect how your website behave.
 
 
     </main>
+    <script>
+        (function () {
+            try {
+                var OFFER_KEY = 'bdk_selected_offer';
+                var SUB_KEY = 'bdk_subscribe_data';
+                var VALID = ['Essentielle', 'Pro', 'Business'];
+
+                var params = new URLSearchParams(window.location.search);
+                var fromUrl = params.get('offer');
+                var stored = localStorage.getItem(OFFER_KEY);
+
+                // Normalise la casse éventuelle
+                var normalize = function (v) {
+                    if (!v) return null;
+                    v = String(v).trim();
+                    // Essaye correspondance insensible à la casse
+                    for (var i = 0; i < VALID.length; i++) {
+                        if (VALID[i].toLowerCase() === v.toLowerCase()) return VALID[i];
+                    }
+                    return null;
+                };
+
+                var chosen = normalize(fromUrl) || normalize(stored) || 'Essentielle';
+
+                // Mémorise pour la prochaine visite
+                try { localStorage.setItem(OFFER_KEY, chosen); } catch (e) {}
+
+                var select = document.getElementById('offerSelect');
+                var offerSpan = document.getElementById('offerChosen');
+                var l1 = document.getElementById('l1');
+                var l2 = document.getElementById('l2');
+                var l3 = document.getElementById('l3');
+                var form = document.getElementById('subscribeForm');
+                var fullNameEl = document.getElementById('fullNameInput');
+                var emailEl = document.getElementById('emailInput');
+                var phoneEl = document.getElementById('phoneInput');
+                var companyEl = document.getElementById('companyInput');
+
+                var features = {
+                    'Essentielle': ['Planning digital', 'Absences & congés', 'Application mobile'],
+                    'Pro': ['Signature électronique', 'Onboarding autonome', 'Badgeuse connectée'],
+                    'Business': ['Analyse & Datas', 'Automatisations avancées', 'API & intégrations']
+                };
+
+                var applyChoice = function (offer) {
+                    if (VALID.indexOf(offer) === -1) offer = 'Essentielle';
+                    if (select) select.value = offer;
+                    if (offerSpan) offerSpan.textContent = offer;
+                    var f = features[offer] || features['Essentielle'];
+                    if (l1) l1.textContent = f[0] || '';
+                    if (l2) l2.textContent = f[1] || '';
+                    if (l3) l3.textContent = f[2] || '';
+                };
+
+                applyChoice(chosen);
+
+                if (select) {
+                    select.addEventListener('change', function () {
+                        var v = normalize(select.value) || 'Essentielle';
+                        try { localStorage.setItem(OFFER_KEY, v); } catch (e) {}
+                        // Met à jour aussi la structure sauvegardée du formulaire
+                        try {
+                            var sub = JSON.parse(localStorage.getItem(SUB_KEY) || '{}');
+                            sub.offer = v;
+                            localStorage.setItem(SUB_KEY, JSON.stringify(sub));
+                        } catch (e) {}
+                        applyChoice(v);
+                    });
+                }
+
+                // Pré-remplissage du formulaire depuis le storage
+                try {
+                    var existing = JSON.parse(localStorage.getItem(SUB_KEY) || '{}');
+                    if (fullNameEl && existing.fullName) fullNameEl.value = existing.fullName;
+                    if (emailEl && existing.email) emailEl.value = existing.email;
+                    if (phoneEl && existing.phone) phoneEl.value = existing.phone;
+                    if (companyEl && existing.company) companyEl.value = existing.company;
+                    if (select && existing.offer && VALID.indexOf(existing.offer) !== -1) {
+                        applyChoice(existing.offer);
+                    }
+                } catch (e) {}
+
+                // Sauvegarde incrémentale à la saisie
+                function saveSubData() {
+                    try {
+                        var data = {
+                            fullName: fullNameEl ? fullNameEl.value.trim() : '',
+                            email: emailEl ? emailEl.value.trim() : '',
+                            phone: phoneEl ? phoneEl.value.trim() : '',
+                            company: companyEl ? companyEl.value.trim() : '',
+                            offer: select ? (normalize(select.value) || 'Essentielle') : chosen
+                        };
+                        localStorage.setItem(SUB_KEY, JSON.stringify(data));
+                    } catch (e) {}
+                }
+
+                [fullNameEl, emailEl, phoneEl, companyEl, select].forEach(function (el) {
+                    if (el && el.addEventListener) el.addEventListener('input', saveSubData);
+                    if (el && el.addEventListener && el.tagName === 'SELECT') el.addEventListener('change', saveSubData);
+                });
+
+                if (form) {
+                    // S'assurer que l'utilisateur passe par l'étape de configuration avant le paiement
+                    try { if (form.getAttribute('action') === 'payment.html') form.setAttribute('action', 'configuration.html'); } catch (e) {}
+                    form.addEventListener('submit', function () {
+                        saveSubData();
+                    });
+                }
+            } catch (err) {
+                // Silencieux: ne bloque pas la page en cas d’erreur JS mineure
+                console && console.warn && console.warn('Offer prefill error:', err);
+            }
+        })();
+    </script>
     <footer id="footer" class="footer_section">
         <div data-container="" class="footer_container">
             <div class="footer_top"><h2>Prêt à découvrir Badakan ?</h2>
